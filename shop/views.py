@@ -49,3 +49,31 @@ class OrderView(View):
 		orders = Order.objects.filter(customer=customer_id).order_by("-date").order_by("-id")
 		print(orders)
 		return render(request,'order.html',{"orders":orders})
+
+
+
+class Checkout(View):
+	def get(self,request):
+		return redirect('cart')
+	
+	def post(self,request):
+		address = request.POST.get('address')
+		phone = request.POST.get('phone')
+		cart = request.session.get('cart')
+		products = Product.getProductById(list(cart.keys()))
+		customer = request.session.get('customer')
+		print(address,phone,cart,products,customer)
+
+		for product in products:
+			newOrder = Order(
+					product=product,
+					customer=Customer(id=customer),
+					quantity=cart[str(product.id)],
+					price=product.price,
+					address=address,
+					phone=phone,
+				)
+			newOrder.save()
+
+		request.session['cart'] = {}
+		return redirect('order')
