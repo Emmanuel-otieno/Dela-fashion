@@ -14,7 +14,7 @@ class Home(View):
 
 		if request.GET.get('id'):
 			filterProductById = Product.objects.get(id=int(request.GET.get('id')))
-			return render(request, 'productDetail.html',{"product":filterProductById,"categories":categories})
+			return render(request, 'product.html',{"product":filterProductById,"categories":categories})
 
 		if not cart:
 			request.session['cart'] = {}
