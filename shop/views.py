@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import view
-
+from .models import Category,Customer,Order,Product
 
 # Create your views here.
 
