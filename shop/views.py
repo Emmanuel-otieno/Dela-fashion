@@ -51,7 +51,6 @@ class OrderView(View):
 		return render(request,'order.html',{"orders":orders})
 
 
-
 class Checkout(View):
 	def get(self,request):
 		return redirect('cart')
@@ -77,3 +76,30 @@ class Checkout(View):
 
 		request.session['cart'] = {}
 		return redirect('order')
+
+
+class Cart(View):
+	def get(self,request):
+		productList = list(request.session.get('cart').keys())
+		if request.GET.get('increase'):
+			pId = request.GET.get('increase')
+			products = request.session.get('cart')
+			products[pId] += 1
+			request.session['cart'] = products
+
+		if request.GET.get('decrease'):
+			pId = request.GET.get('decrease')
+			products = request.session.get('cart')
+			print(products[pId])
+			if products[pId] > 1:
+				products[pId] -= 1
+				request.session['cart'] = products
+				productList = list(request.session.get('cart').keys())
+			else :
+				del products[pId]
+				request.session['cart'] = products
+				productList = list(request.session.get('cart').keys())
+				
+
+		allProduct = Product.getProductById(productList)
+		return render(request,'cart.html',{"allProduct":allProduct})		
