@@ -22,7 +22,7 @@
             	{% for product in allProduct %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td><img height="80px" width="100px" src="{{ product.image.url }}" alt=""></td>
+                    <td><img height="180px" width="100px" src="{{ product.image.url }}" alt=""></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price}}</td>
                     <td>{{ product|cart_quantity:request.session.cart }}</td>
@@ -30,7 +30,7 @@
                     	<a href="cart?increase={{ product.id }}" class="btn btn-sm btn-warning">+</a>
                         <a href="cart?decrease={{ product.id }}" class="btn btn-sm btn-danger">-</a>
                     </td>
-                    <th>{{ product|price_subtotal:request.session.cart|currency }}</th>
+                    <th>{{ product|price_subtotal:request.session.cart}}</th>
 
                 </tr>
                 {% endfor %}
