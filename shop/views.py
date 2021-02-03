@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
-from django.views import view
+from django.views import View
 from django.contrib.auth.hashers import check_password,make_password
 from .models import Category,Customer,Order,Product
 
@@ -129,10 +129,9 @@ class Login(View):
 			return render(request,'login.html',{"userData":userData,"error":"Email or password doesn't match"})
 
 
-    def logout(request):
-		request.session.clear()
-		return redirect('home')
-
+def logout(request):
+	request.session.clear()
+	return redirect('home')  
 
 class Signup(View):
 

@@ -1,7 +1,8 @@
 from django.db import models
 import datetime
-# Create your models here.
 
+
+# Create your models here
 class Category(models.Model):
 	name = models.CharField(max_length=20)
 
@@ -15,8 +16,8 @@ class Category(models.Model):
 
 
 class Order(models.Model):
-	product = models.ForeignKey(Product,on_delete=models.CASCADE)
-	customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
+	# product = models.ForeignKey(Product,on_delete=models.CASCADE)
+	# customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
 	quantity = models.IntegerField(default=1)
 	price = models.IntegerField()
 	date = models.DateField(default=datetime.datetime.today)

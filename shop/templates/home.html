@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cart %}
+
 {% block title %} Fashion  {% endblock %}
 {% block content %}
 <div class="container">
@@ -27,7 +27,7 @@
                             <img class="card-img-top" src="{{ product.image.url }}" height="200px" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-title">{{ product.name|truncatechars:60 }}</p>
-                                <p class="card-text">{{ product.price|currency }}</p>
+                                <p class="card-text">{{ product.price}}</p>
                                 <form action="/#{{ product.id }}" method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" value="{{ product.id }}" name="product">

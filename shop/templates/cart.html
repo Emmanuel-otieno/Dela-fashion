@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cart %}
+
 {% block title %} Fashion | Cart {% endblock %}
 {% block content %}
 <div class="container">
@@ -24,7 +24,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td><img height="80px" width="100px" src="{{ product.image.url }}" alt=""></td>
                     <td>{{ product.name }}</td>
-                    <td>{{ product.price|currency }}</td>
+                    <td>{{ product.price}}</td>
                     <td>{{ product|cart_quantity:request.session.cart }}</td>
                     <td>
                     	<a href="cart?increase={{ product.id }}" class="btn btn-sm btn-warning">+</a>

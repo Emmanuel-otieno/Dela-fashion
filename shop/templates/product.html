@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cart %}
+
 {% block title %} Fashion | Product {% endblock %}
 {% block content %}
 <div class="container">
@@ -23,7 +23,7 @@
                                 <div class="col-md-8">
                                     <div>
                                         <h1 class="font-weight-light">{{ product.name }}</h1>
-                                        <h4 class="font-weight-light">Price: <strong>{{ product.price|currency }}</strong></h4>
+                                        <h4 class="font-weight-light">Price: <strong>{{ product.price}}</strong></h4>
                                          <form action="/#{{ product.id }}" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" value="{{ product.id }}" name="product">
