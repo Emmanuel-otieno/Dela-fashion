@@ -167,8 +167,8 @@ class Signup(View):
 			error['minPass_error'] = "Password must be 8 char"
 		elif len(userData['name']) > 25 or len(userData['name']) < 3 :
 			error["name_error"] = "Name must be 3-25 charecter"
-		elif len(userData['phone']) != 11:
-			error["phoneNumber_error"] = "Phone number must be 11 charecter."
+		elif len(userData['phone']) != 10:
+			error["phoneNumber_error"] = "Phone number must be 10 charecter."
 		elif userData['password'] != userData['confirm_password']:
 			error["notMatch_error"] = "Password doesn't match"	
 

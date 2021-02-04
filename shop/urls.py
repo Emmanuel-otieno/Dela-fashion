@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home,Cart,Checkout,OrderView
+from .views import Home,Cart,Checkout,OrderView,Signup,Login,logout
 from .middlewares import LoginCheckMiddleware,LogoutCheckMiddleware
 
 
