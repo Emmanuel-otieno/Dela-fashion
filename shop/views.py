@@ -49,9 +49,6 @@ class OrderView(View):
 		customer_id = request.session.get('customer')
 		orders = Order.objects.filter(customer=customer_id).order_by("-date").order_by("-id")
 		print(orders)
-
-
-
 		return render(request,'order.html',{"orders":orders})
         
 
