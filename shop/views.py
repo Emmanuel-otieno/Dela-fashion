@@ -51,17 +51,6 @@ class OrderView(View):
 		print(orders)
 
 
-		if request.method == 'POST':
-           form = OrderForm(request.POST)
-           if form.is_valid():
-               name = form.cleaned_data['your_name']
-               email = form.cleaned_data['email']
-
-               recipient = Order(name = name,email =email)
-               recipient.save()
-               send_welcome_email(name,email)
-
-               HttpResponseRedirect('/')
 
 		return render(request,'order.html',{"orders":orders})
         

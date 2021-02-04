@@ -22,7 +22,7 @@
             	{% for order in orders %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td><img height="80px" width="100px" src="{{ order.product.image.url }}" alt=""></td>
+                    <td><img height="180px" width="100px" src="{{ order.product.image.url }}" alt=""></td>
                     <td>{{ order.product }}</td>
                     <td>{{ order.price|currency }}</td>
                     <td>{{ order.quantity }}</td>
