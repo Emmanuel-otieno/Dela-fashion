@@ -49,7 +49,22 @@ class OrderView(View):
 		customer_id = request.session.get('customer')
 		orders = Order.objects.filter(customer=customer_id).order_by("-date").order_by("-id")
 		print(orders)
+
+
+		if request.method == 'POST':
+           form = OrderForm(request.POST)
+           if form.is_valid():
+               name = form.cleaned_data['your_name']
+               email = form.cleaned_data['email']
+
+               recipient = Order(name = name,email =email)
+               recipient.save()
+               send_welcome_email(name,email)
+
+               HttpResponseRedirect('/')
+
 		return render(request,'order.html',{"orders":orders})
+        
 
 
 class Checkout(View):
