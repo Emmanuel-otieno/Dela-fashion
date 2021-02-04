@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.views import View
 from django.contrib.auth.hashers import check_password,make_password
 from .models import Category,Customer,Order,Product
-
+from .email import send_welcome_email
 # Create your views here.
 
 class Home(View):
