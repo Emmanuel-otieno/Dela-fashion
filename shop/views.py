@@ -6,7 +6,7 @@ from .email import send_welcome_email
 # Create your views here.
 
 class Home(View):
-
+	
 	def get(self,request):
 		cart = request.session.get('cart')
 		categories = Category.getAllCategory()
